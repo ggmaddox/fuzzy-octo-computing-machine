@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="225dp"
+    android:background="@android:color/holo_blue_light"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/text_movie_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#2f75b5"
+        android:paddingTop="0dp"
+        android:text="Movie Title"
+        android:textColor="@android:color/background_light"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/text_movie_year"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/search_even"
+        android:paddingTop="0dp"
+        android:text="0"
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/text_movie_director"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/search_odd"
+        android:paddingTop="0dp"
+        android:text="NaN"
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/text_movie_stars"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:background="@color/search_even"
+        android:text="casts"
+        android:textColor="@android:color/background_light"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/text_genres"
+        android:layout_width="match_parent"
+        android:layout_height="67dp"
+        android:background="@color/search_odd"
+        android:text="genres"
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp" />
+
+</LinearLayout>

@@ -1,0 +1,76 @@
+<!-- This example is following frontend and backend separation.
+
+    This .html performs two steps:
+    1. Create a html template skeleton, with all the elements defined (some left empty) and named with ids.
+    2. Load index.js to populate the data into empty elements.
+    -->
+
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Browse</title>
+</head>
+<body>
+
+
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="index.html">Fabflix</a>
+    </div>
+    <ul class="nav navbar-nav" style="display:block;">
+      <li id="browse_nav" style="float:left;"><a href="browse.html" style="display:block;padding:10px;">Browse</a></li>
+      <li id="search_nav" style="float:left;"><a href="advanced-search.html" style="display:block;padding:10px;">Advanced Search</a></li>
+      <li id="emp_nav" style="float:left;"><a href="_dashboard.html" style="display:block;padding:10px;">Employee Dashboard</a></li>
+    </ul>
+   	<form class="form-inline" id="search_bar" method="get" action="search-results.html">
+		<input class="form-control mr-sm-2" type="search" placeholder="Search" name="search_term">
+		<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+	</form>
+  </div>
+</nav>
+
+
+
+<div id="misc-header-links" align = "right">
+	<a href= "shopping-cart.html" style="padding:10px;">Shopping Cart</a>
+	<a href="checkout.html" style="padding:10px;">Checkout</a>
+</div>
+
+<h1>Fabflix</h1>
+<hr>
+<h2 align = "center">Browse by Title</h2>
+
+<!-- Id "star_table" is useful for jQuery to find the html element with id, class here is mapping to Bootstrap defined class CSS -->
+<!-- TODO change star name to movie -->
+<table id=character_table class="table table-striped">
+    <tbody id=character_table_body></tbody>
+</table>
+
+<HR style="width:60%">
+
+<h2 align = "center">Browse by Genre</h2>
+
+<table id=genre_table class="table table-striped">
+    <tbody id=genre_table_body></tbody>
+</table>
+
+<!-- Load jQuery and Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+<script src="browse.js"></script>
+</body>
+
+
+</html>

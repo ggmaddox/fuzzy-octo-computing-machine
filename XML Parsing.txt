@@ -1,0 +1,17 @@
+Methods on making the SAX Parsers more efficient:
+
+* Usage of a HashSet to store parsed Movie/Actor/Star objects
+	* Implementing hashCode() and equals() based on an object's essential info
+		* Ex: Movies are compared based off their title, year, and director
+	* Using a HashSet makes adding or looking up an object run at O(1) time complexity
+	
+* Specifically for CastsParsers, searching for a movie_id per movie and not per cast prevents extra calls to the database
+	* Bool flags, hasMovieName and hasMovieId, allow the program to only get a movie name from a <t> tag when the movie name has not been obtained and makes sure that when it is time to search for the movie ID, the ID is only searched once, respectively
+	
+* Whenever checking if something exists in the database, use LIMIT 1 to prevent a further search 
+	* Without LIMIT 1, the database will attempt to find more results after it finds one row
+
+* Indexes were used to improve database lookup
+	* Table movies contains two indexes, (title, year, director) and (title, director) to assist with lookup is MainsParser and CastsParser, which use this format to determine whether a movie exists in the database
+	* Table stars contains one index (name) for name to star_id lookup
+	* This prevents the database from starting lookup from the first row of the database, then uses a B+ Tree-like lookup to estimate where the key would be

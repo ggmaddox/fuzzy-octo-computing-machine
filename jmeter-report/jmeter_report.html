@@ -1,0 +1,114 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+    background-color: linen;
+}
+
+td {
+    border-top-style: solid;
+}
+</style>
+</head>
+<body>
+
+<table style="width:100%">
+  <tr style="font-weight:bold; background-color: orange">
+    <td width="300px">Single-instance version cases</td>
+    <td>Graph Results Screenshot</td>
+    <td>Average Query Time(ms)</td>
+    <td>Average Search Servlet Time(ms)</td>
+    <td>Average JDBC Time(ms)</td>
+    <td>Analysis</td>
+  </tr>
+  <tr>
+    <td>Case 1: HTTP/1 thread</td>
+    <td><img src="http-single-1-thread.png" alt="Graph Results Screenshot Case 3" style="width:304px;height:228px;"></td>
+    <td>230</td>
+    <td>29.424150008705517</td>
+    <td>29.06334498523842</td>
+    <td>A single thread repeatedly making requests seems to be able to do it faster than ten threads competing all at once.</td>
+  </tr>
+  <tr>
+    <td>Case 2: HTTP/10 threads</td>
+    <td><img src="http-single-10-threads.png" alt="Graph Results Screenshot Case 4" style="width:304px;height:228px;"></td>
+    <td>384</td>
+    <td>164.2464696468579</td>
+    <td>164.11490329901613</td>
+    <td>Seems comparable to the instances in which no connection-pooling/prepared statements were used.</td>
+  </tr>
+  <tr>
+    <td>Case 3: HTTPS/10 threads</td>
+    <td><img src="https-single-10-threads.png" alt="Graph Results Screenshot Case 5" style="width:304px;height:228px;"></td>
+    <td>541</td>
+    <td>112.75415386714604</td>
+    <td>112.58411100037814</td>
+    <td>The average query time is the longest here, and that makes sense given that more processing and redirecting is necessary.</td>
+  </tr>
+  <tr>
+    <td>Case 4: HTTP/10 threads/No prepared statements</td>
+    <td><img src="http-single-10-threads-no-ps.png" alt="Graph Results Screenshot Case 1" style="width:304px;height:228px;"></td>
+    <td>374</td>
+    <td>152.77562996479887</td>
+    <td>152.64916578236168</td>
+    <td>comparable to the instance with prepared statements.</td>
+  </tr>
+  <tr>
+    <td>Case 5: HTTP/10 threads/No connection pooling</td>
+    <td><img src="http-single-10-threads-no-cp.png" alt="Graph Results Screenshot Case 2" style="width:304px;height:228px;"></td>
+    <td>366</td>
+    <td>140.27827779712345</td>
+    <td>140.15505429712323</td>
+    <td>comparable to the instances in which prepared statements were both used and not used.</td>
+  </tr>
+
+</table> 
+
+
+<table style="width:100%">
+  <tr style="font-weight:bold; background-color: orange">
+    <td width="300px">Scaled version cases</td>
+    <td>Graph Results Screenshot</td>
+    <td>Average Query Time(ms)</td>
+    <td>Average Search Servlet Time(ms)</td>
+    <td>Average JDBC Time(ms)</td>
+    <td>Analysis</td>
+  </tr>
+  <tr>
+    <td>Case 1: HTTP/1 thread</td>
+    <td><img src="http-scaled-1-thread.png" alt="Graph Results Screenshot Case 3" style="width:304px;height:228px;"></td>
+    <td>229</td>
+    <td>28.97793244473881</td>
+    <td>28.75844110030279</td>
+    <td>Performance here is comparable to that of the single instance.</td>
+  </tr>
+  <tr>
+    <td>Case 2: HTTP/10 threads</td>
+    <td><img src="http-scaled-10-threads.png" alt="Graph Results Screenshot Case 4" style="width:304px;height:228px;"></td>
+    <td>291</td>
+    <td>55.15971365113646</td>
+    <td>54.967301056818066</td>
+    <td>Time spent in the servlet seems to increase when more than one thread is making requests.</td>
+  </tr>
+  <tr>
+    <td>Case 3: HTTP/10 threads/No prepared statements</td>
+    <td><img src="http-scaled-10-threads-no-ps.png" alt="Graph Results Screenshot Case 1" style="width:304px;height:228px;"></td>
+    <td>269</td>
+    <td>50.72950004428462</td>
+    <td>50.5558237562453</td>
+    <td>Comparable to the scaled instances that use prepared statements/don't use connection pooling.</td>
+  </tr>
+  <tr>
+    <td>Case 4: HTTP/10 threads/No connection pooling</td>
+    <td><img src="http-scaled-10-threads-no-cp.png" alt="Graph Results Screenshot Case 2" style="width:304px;height:228px;"></td>
+    <td>272</td>
+    <td>51.20053793868277</td>
+    <td>51.04387519190008</td>
+    <td>Comparable to the scaled instances that use connection pooling/ don't use prepared statements.</td>
+  </tr>
+
+</table> 
+
+</body>
+</html>

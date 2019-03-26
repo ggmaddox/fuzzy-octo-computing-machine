@@ -1,0 +1,20 @@
+Search Servlet
+-------------
+This search is general, so we used the OR functionality. 
+For substring matching we used the pattern LIKE %ABC% in order to 
+get a general result.
+
+
+Advanced Search Servlet
+-----------------
+For this type of search, we used the pattern LIKE %ABC%
+for each term (title, year, director, star).
+We also used the AND functionality in order to 
+get more precise results. 
+
+Browse Results Servlet
+----------------
+When users browse by title, we used the pattern
+LIKE A% because the movies are always listed
+by the first letter in the title.
+

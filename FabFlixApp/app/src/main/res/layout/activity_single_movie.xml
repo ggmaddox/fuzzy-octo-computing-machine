@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SingleMovieActivity">
+
+    <LinearLayout
+        android:layout_width="342dp"
+        android:layout_height="425dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/text_single_title"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="@color/Title_BG"
+            android:gravity="bottom|top"
+            android:text="@string/default_movie_title"
+            android:textColor="@color/common_google_signin_btn_text_dark_pressed"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/text_single_year"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@color/odd_BG"
+            android:gravity="bottom|top"
+            android:text="@string/default_movie_year"
+            android:textColor="@color/common_google_signin_btn_text_dark_pressed"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/text_single_director"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/Even_BG"
+            android:gravity="bottom|top"
+            android:text="@string/default_director"
+            android:textColor="@color/common_google_signin_btn_text_dark_default"
+            android:textColorHighlight="@color/common_google_signin_btn_text_dark_focused"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/text_single_cast"
+            android:layout_width="match_parent"
+            android:layout_height="133dp"
+            android:background="@color/odd_BG"
+            android:gravity="bottom|top"
+            android:text="@string/default_cast"
+            android:textColor="@color/common_google_signin_btn_text_dark_pressed"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/text_single_genres"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/Even_BG"
+            android:gravity="center_vertical"
+            android:text="@string/default_genres"
+            android:textColor="@color/common_google_signin_btn_text_dark_default"
+            android:textSize="18sp" />
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

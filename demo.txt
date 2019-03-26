@@ -1,0 +1,86 @@
+------------------
+Before demo starts
+------------------
+
+login to aws	-> change security rules
+putty 		-> aws
+git bash	
+eclipse
+
+
+---production machine---
+
+> mkdir gitclones
+> cd gitclones
+> git clone https://ggmaddox@github.com/UCI-Chenli-teaching/cs122b-winter19-team-102.git
+
+git checkout master // checkout to the master branch
+git status // show us nothing is changed in your repository
+git log // the first commit ID that shows up should match the commit ID we have
+
+If "git status" shows that some files are changed, we can use "git stash" to temporarily revert the changed files. You can use "git stash pop" to get those files back later.
+
+
+---start tomcat---
+
+> /home/ubuntu/tomcat/bin/startup.sh
+Then (in development machine) browser -> http://ec2-3-17-64-3.us-east-2.compute.amazonaws.com:8080/
+click on manager app
+
+
+
+
+---drop database---
+
+mysql -u mytestuser -p
+mysql> drop database if exists moviedb;
+mysql> show databases;
+
+
+---just in case we need to show during demo---
+
+wget https://grape.ics.uci.edu/wiki/public/raw-attachment/wiki/cs122b-2019-winter-project1/movie-data.sql
+
+--------------------
+Demo
+-------------------
+
+---production machine---
+
+.sql files are in ~/gitclones/cs122b-winter19-team-102/project1
+
+mysql -u mytestuser -p < createtable.sql; 
+mysql -u mytestuser -p moviedb < movie-data.sql;
+
+---development machine---
+
+git checkout master // checkout to the master branch
+git status // show us nothing is changed in your repository
+git log // the first commit ID that shows up should match the commit ID we have
+
+If "git status" shows that some files are changed, we can use "git stash" to temporarily revert the changed files. You can use "git stash pop" to get those files back later.
+
+---eclipse---
+
+right-click project, export WAR file
+
+in browser, go to Tomcat manager app and deploy WAR file
+
+
+---aws bash---
+from project folder
+
+> mvn clean package
+> cp target/fabflix.war /home/ubuntu/tomcat/webapps/
+
+> mvn exec:java -q -Dexec.cleanupDaemonThreads=false -Dexec.mainClass="JDBC1". 
+	To run JDBC2, change mainClass="JDBC1" to mainClass="JDBC2"
+
+
+
+
+
+
+
+
+

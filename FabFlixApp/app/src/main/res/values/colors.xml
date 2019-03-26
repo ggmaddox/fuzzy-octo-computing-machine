@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="Title_BG">#507443</color>
+    <color name="odd_BG">#5F894D</color>
+    <color name="Even_BG">#6A9558</color>
+    <color name="search_odd">#548EC2</color>
+    <color name="search_even">#5B9BD5</color>
+</resources>

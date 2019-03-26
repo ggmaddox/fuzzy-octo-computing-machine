@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+   <!-- Using jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- include jquery autocomplete JS  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.devbridge-autocomplete/1.4.7/jquery.autocomplete.min.js"></script>
+
+    <!-- Bootstrap for CSS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="style.css">
+          
+    <title>Fablfix</title>
+</head>
+<body>
+<!-- 
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Fabflix</a>
+    </div>
+    <ul class="nav navbar-nav" style="display:block;">
+      <li id="browse_nav" style="float:left;"><a href="browse.html" style="display:block;padding:10px;">Browse</a></li>
+      <li id="search_nav" style="float:left;"><a href="advanced-search.html" style="display:block;padding:10px;">Advanced Search</a></li>
+      <li id="emp_nav" style="float:left;"><a href="_dashboard.html" style="display:block;padding:10px;">Employee Dashboard</a></li>
+    </ul>
+   	<form class="form-inline" id="search_bar" method="get" action="search-results.html">
+		<input class="form-control mr-sm-2" type="search" placeholder="Search" name="search_term">
+		<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+	</form>
+  </div>
+</nav>
+
+<div id="misc-header-links" align = "right">
+	<a href= "shopping-cart.html">Shopping Cart</a>
+	<a href="checkout.html">Checkout</a>
+</div>
+ -->
+ 
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="index.html">Fabflix</a>
+    </div>
+    <ul class="nav navbar-nav" style="display:block;">
+      <li id="browse_nav" style="float:left;"><a href="browse.html" style="display:block;padding:10px;">Browse</a></li>
+      <li id="search_nav" style="float:left;"><a href="advanced-search.html" style="display:block;padding:10px;">Advanced Search</a></li>
+      <li id="emp_nav" style="float:left;"><a href="_dashboard.html" style="display:block;padding:10px;">Employee Dashboard</a></li>
+      
+      <li id="search-bar" style="float:left;">
+      	<input type="text" name="movie-title-search" id="autocomplete" 
+	       class="autocomplete-searchbox form-control" 
+	       placeholder="Search Movies"/>
+	  </li>
+      
+    </ul>
+    <!-- 
+   	<form class="form-inline" id="search_bar" method="get" action="search-results.html">
+		<input class="form-control mr-sm-2" type="search" placeholder="Search" name="search_term">
+		<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+	</form>
+	 -->
+  </div>
+</nav>
+
+
+
+<div id="misc-header-links" align = "right">
+	<a href= "shopping-cart.html" style="padding:10px;">Shopping Cart</a>
+	<a href="checkout.html" style="padding:10px;">Checkout</a>
+</div>
+Welcome to Fablix!
+<p id="sessionID"></p>
+<p id="lastAccessTime"></p>
+<form ACTION="#" id="cart" METHOD="get">
+    <label>Item Purchased</label>
+    <br>
+    <input type="text" required="required" name="item">
+    <input type="submit" VALUE="add">
+</form>
+<div id="item_list"></div>
+
+<!-- 
+<!-- include your own JS file --
+<script src='https://code.jquery.com/jquery-3.1.0.min.js'></script>
+
+<!-- Using jQuery --
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- include jquery autocomplete JS  --
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.devbridge-autocomplete/1.4.7/jquery.autocomplete.min.js"></script>
+ -->
+    
+ 
+
+<script type='text/javascript' src='index.js'></script>
+<script type='text/javascript' src='search-suggestions.js'></script>
+
+</body>
+</html>

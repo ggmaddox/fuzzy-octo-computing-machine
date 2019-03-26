@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".IndexActivity">
+
+    <LinearLayout
+        android:id="@+id/index_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/index_title"
+            android:layout_width="match_parent"
+            android:layout_height="93dp"
+            android:paddingTop="15dp"
+            android:text="@string/app_name"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+            tools:text="@string/app_name" />
+
+        <EditText
+            android:id="@+id/text_search_bar"
+            android:layout_width="match_parent"
+            android:layout_height="74dp"
+            android:ems="10"
+            android:hint="@string/search_title"
+            android:inputType="text" />
+
+        <Button
+            android:id="@+id/search_button"
+            android:layout_width="match_parent"
+            android:layout_height="69dp"
+            android:onClick="onSearchButtonPress"
+            android:text="@string/search_button" />
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

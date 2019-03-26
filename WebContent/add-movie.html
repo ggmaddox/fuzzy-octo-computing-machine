@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+          
+    <title>Add Movie</title>
+</head>
+
+<body>
+
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="index.html">Fabflix</a>
+    </div>
+    <ul class="nav navbar-nav" style="display:block;"">
+      <li id="browse_nav" style="float:left;"><a href="browse.html" style="display:block;padding:10px;">Browse</a></li>
+      <li id="search_nav" style="float:left;"><a href="advanced-search.html" style="display:block;padding:10px;">Advanced Search</a></li>
+      <li id="emp_nav" style="float:left;"><a href="_dashboard.html" style="display:block;padding:10px;">Employee Dashboard</a></li>
+      <li id="movie_nav" style="float:left;"><a href="add-movie.html" style="display:block;padding:10px;">Add Movie</a></li>
+      <li id="emp_nav" style="float:left;"><a href="add-star.html" style="display:block;padding:10px;">Add Star</a></li>
+    </ul>
+   	<form class="form-inline" id="search_bar" method="get" action="search-results.html">
+		<input class="form-control mr-sm-2" type="search" placeholder="Search" name="search_term">
+		<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+	</form>
+  </div>
+</nav>
+
+
+
+<div id="misc-header-links" align = "right">
+	<a href= "shopping-cart.html" style="padding:10px;">Shopping Cart</a>
+	<a href="checkout.html" style="padding:10px;">Checkout</a>
+</div>
+
+
+<h3>Movie Table Metadata</h3>
+<table id=movie-table class="table table-sm table-borderd table-dark">
+    <!-- Create a table header -->
+    <thead>
+    <tr>
+        <!-- Titles of each column-->
+        <th>Column Name</th>
+        <th>Data Type</th>
+        <th>NULL</th>
+    </tr>
+    </thead>
+    <!-- Table body is left empty here, will be populated with the data retrieved with index.js -->
+    <!-- Again, id "star_table_body" is useful for jQuery to find this html element -->
+    <!-- TODO change star name to movie -->
+    <tbody id=movie-table-body></tbody>
+</table>
+
+<h3>Stars Table Metadata</h3>
+<table id=stars-table class="table table-sm table-borderd table-dark">
+    <!-- Create a table header -->
+    <thead>
+    <tr>
+        <!-- Titles of each column-->
+        <th>Column Name</th>
+        <th>Data Type</th>
+        <th>NULL</th>
+    </tr>
+    </thead>
+    <!-- Table body is left empty here, will be populated with the data retrieved with index.js -->
+    <!-- Again, id "star_table_body" is useful for jQuery to find this html element -->
+    <!-- TODO change star name to movie -->
+    <tbody id=stars-table-body></tbody>
+</table>
+
+<h3>Genres Table Metadata</h3>
+<table id=genres-table class="table table-sm table-borderd table-dark">
+    <!-- Create a table header -->
+    <thead>
+    <tr>
+        <!-- Titles of each column-->
+        <th>Column Name</th>
+        <th>Data Type</th>
+        <th>NULL</th>
+    </tr>
+    </thead>
+    <!-- Table body is left empty here, will be populated with the data retrieved with index.js -->
+    <!-- Again, id "star_table_body" is useful for jQuery to find this html element -->
+    <!-- TODO change star name to movie -->
+    <tbody id=genres-table-body></tbody>
+</table>
+
+	<div style="text-align: center; margin: 80px;">
+     
+     	<div style="display: inline-block;">
+     
+     		<h2 style="margin: 0 0 20px 0;">Add Movie</h2>
+     		
+     		
+     	<!-- change method and action -->
+     	
+     	
+     		<form id="search-form" method="get" action="#">
+	    		<label><b>Title</b></label>
+	    		<input type="text" placeholder="Enter Title" name="movie-title">
+	    		<br>
+	    		<label><b>Year</b></label>
+	    		<input type="text" placeholder="Enter Year" name="movie-year">
+	    		<br>
+	    			    		<label><b>Director</b></label>
+	    		<input type="text" placeholder="Enter Director" name="movie-director">
+	    		<br>
+
+	    			    		<label><b>Star</b></label>
+	    		<input type="text" placeholder="Enter Single Star" name="star-name">
+	    		<br>
+	    			    		<label><b>Genre</b></label>
+	    		<input type="text" placeholder="Enter Single Genre" name="genre-name">
+	    		<br>
+	    			    		<input type="submit" value="Add">
+			</form>
+			
+     	</div>
+	</div>
+	
+	<div id="error-message"></div>
+	
+    <div id="status"></div>
+	
+	<!-- include jQuery and Bootstrap-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	
+	<!-- include our own JS file -->
+	<script src="add-movie.js"></script> 
+
+</body>
+</html>

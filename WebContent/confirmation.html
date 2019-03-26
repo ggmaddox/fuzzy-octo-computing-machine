@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Confirmation</title>
+</head>
+<body>
+
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="index.html">Fabflix</a>
+    </div>
+    <ul class="nav navbar-nav" style="display:block;">
+      <li id="browse_nav" style="float:left;"><a href="browse.html" style="display:block;padding:10px;">Browse</a></li>
+      <li id="search_nav" style="float:left;"><a href="advanced-search.html" style="display:block;padding:10px;">Advanced Search</a></li>
+
+    </ul>
+   	<form class="form-inline" id="search_bar" method="get" action="search-results.html">
+		<input class="form-control mr-sm-2" type="search" placeholder="Search" name="search_term">
+		<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+	</form>
+  </div>
+</nav>
+
+
+
+<div id="misc-header-links" align = "right">
+	<a href= "shopping-cart.html" style="padding:10px;">Shopping Cart</a>
+	<a href="checkout.html" style="padding:10px;">Checkout</a>
+</div>
+
+
+<h2 align = "center">Checkout</h2>
+<div id = "message">
+<p align="center">You have officially checked out: </p></div>
+<div id="checked_out_cart_list">
+	<table id="checked_out_cart_table" class="table table-striped">
+		<thead>
+			<tr>
+				<th>Sales Id</th>
+				<th>Product</th>
+				<th>Quantity</th>
+			</tr>
+		</thead>
+		<tbody id="checked_out_cart_table_body"></tbody>
+	</table>
+</div>
+
+<script src='https://code.jquery.com/jquery-3.1.0.min.js'></script>
+<script type='text/javascript' src='confirmation.js'></script>
+</body>
+</html>
