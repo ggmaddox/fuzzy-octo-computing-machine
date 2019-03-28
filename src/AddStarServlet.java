@@ -3,7 +3,7 @@ import java.io.PrintWriter;
 import java.sql.*;
 //import java.util.ArrayList;
 //import java.util.Date;
-import java.util.*;
+//import java.util.*;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletException;
@@ -11,7 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+//import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 import com.google.gson.JsonArray;
@@ -69,7 +69,6 @@ public class AddStarServlet  extends HttpServlet {
         	starName = "";
         }
 		
-		
 		System.out.println("starName: " + starName);
 		System.out.println("starDob: " + starDob);
 		
@@ -91,8 +90,7 @@ public class AddStarServlet  extends HttpServlet {
 			JsonObject errObject = new JsonObject();
 			errObject.addProperty("error-message", "");
 			JsonObject successObject = new JsonObject();
-			successObject.addProperty("success-message", "");
-			
+			successObject.addProperty("success-message", "");	
 			
 			while (rsTable.next()) {
 				System.out.println("ResultSet for metadata.");
@@ -155,6 +153,7 @@ public class AddStarServlet  extends HttpServlet {
 					insertStatement.setString(2, starName);
 				}
 				int rows_affected = insertStatement.executeUpdate();
+				System.out.println("Rows affected by insert: " + rows_affected);
 				successObject.addProperty("success-message", "Star successfully inserted into the database.");
 				jsonArray.add(successObject);
 				jsonArray.add(errObject);
@@ -165,8 +164,6 @@ public class AddStarServlet  extends HttpServlet {
 				 * star name is empty and need to put error 
 				 * message in json object
 				 */
-				//JsonObject jsonObject = new JsonObject();
-				//jsonObject.addProperty("error-message", "Name field is required.");
 				errObject.addProperty("error-message", "Name field is required. " + dobErrMsg);
 				jsonArray.add(successObject);
 				jsonArray.add(errObject);

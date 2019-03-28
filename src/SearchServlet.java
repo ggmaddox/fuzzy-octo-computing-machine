@@ -34,23 +34,24 @@ public class SearchServlet  extends HttpServlet {
 	public SearchServlet() {
 		super();
 	}
-////	// Create a dataSource which registered in web.xml
+	    // Create a dataSource which registered in web.xml
 //		@Resource(name = "jdbc/moviedb")
 //		private DataSource dataSource; 
-//////		
-////		/**
-////		 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-////		 *      response)
-////		 */
+		
+		/**
+		 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+		 *      response)
+		 */
 		protected void doGet(HttpServletRequest request, HttpServletResponse response)
 				throws ServletException, IOException {
 			
-//			// Time an event in a program to nanosecond precision
+			// Time an event in a program to nanosecond precision
 			long startTimeTS = System.nanoTime();
 			
-////			/********************************************************
-////			 * writing TS, TJ to file
-////			 *******************************************************/
+			/********************************************************
+			 * writing TS, TJ to file
+			 *******************************************************/
+			/*
 			String contextPath = getServletContext().getRealPath("/");
 			String filePath = contextPath+"search-log";
 			System.out.println(filePath);
@@ -66,7 +67,7 @@ public class SearchServlet  extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			} 
-
+			*/
 			response.setContentType("application/json"); // Response mime type
 
 			String userAgent = request.getHeader("User-Agent");
@@ -78,7 +79,7 @@ public class SearchServlet  extends HttpServlet {
 			if (userAgent != null && !userAgent.contains("Android"))
 			{
 				
-////			// get the parameters in the url
+			// get the parameters in the url
 				searchTermRaw = request.getParameter("search_term");
 				pageNum = request.getParameter("page-num");
 				displayNum = request.getParameter("display-num");
@@ -102,7 +103,7 @@ public class SearchServlet  extends HttpServlet {
 			System.out.println("SearchTerm: " + searchTermRaw);
 			System.out.println("PageNum: " + pageNum);
 			System.out.println("DisplayNum: " + displayNum);
-////			// default query, no ORDER BY, no ASC/DESC
+			// default query, no ORDER BY, no ASC/DESC
 			String base_query = "select \r\n" + 
 					"movies.id, title, movies.`year`, \r\n" + 
 					"director, rating\r\n" + 
@@ -125,9 +126,9 @@ public class SearchServlet  extends HttpServlet {
 			String order_query =
 					"limit ?\r\n" + 
 					"offset ?;";
-////			/*
-////			 * create order by statement to insert into sql query.
-////			 */
+			/*
+			 * create order by statement to insert into sql query.
+			 */
 			String orderByClause = "";	
 			if (sortBy != null) {
 				if (!sortBy.isEmpty() && sortBy.equals("title")) {
@@ -138,7 +139,7 @@ public class SearchServlet  extends HttpServlet {
 				}
 			}
 			
-////			// query with ORDER BY but no ASC/DESC
+			// query with ORDER BY but no ASC/DESC
 			if (!orderByClause.isEmpty()) {
 				if (orderByClause.equals("rating")) {
 					order_query = 
@@ -197,29 +198,29 @@ public class SearchServlet  extends HttpServlet {
 						
 			System.out.printf("SearchServlet: offset (pagenum) = %s, limit (displayNum) = %s %n", pageNum, displayNum);
 			
-////			// Determine whether you're going to the next or prev page.
+			// Determine whether you're going to the next or prev page.
 			int int_pg_num = Integer.parseInt(pageNum);
 		
 			
-////			// none of the if statements above will execute if you're just loading the current pg
+			// none of the if statements above will execute if you're just loading the current pg
 			System.out.println("SearchServlet: int_pg_num =  " + Integer.toString(int_pg_num));
 			int int_offset = Integer.parseInt(displayNum) * (int_pg_num - 1);
 			System.out.println("SearchServlet: int_offset = " + Integer.toString(int_offset));
 			
 			if (searchTermRaw != null) {
-////				//String searchTerm = "%" + searchTermRaw + "%";
-////				
-////				//System.out.println("SearchServlet search term: " + searchTerm);
-////				
-////				// Output stream to STDOUT
+				//String searchTerm = "%" + searchTermRaw + "%";
+				
+				//System.out.println("SearchServlet search term: " + searchTerm);
+				
+				// Output stream to STDOUT
 				PrintWriter sout = response.getWriter();
 				try {
 
 					// Time an event in a program to nanosecond precision
 					long startTimeTJ = System.nanoTime();
-////					
-////		            // the following few lines are for connection pooling
-////		            // Obtain our environment naming context
+					
+		            // the following few lines are for connection pooling
+		            // Obtain our environment naming context
 
 					
 		            Context initCtx = new InitialContext();
@@ -236,15 +237,14 @@ public class SearchServlet  extends HttpServlet {
 
 		            Connection dbcon = ds.getConnection();
 		            if (dbcon == null)
-		                sout.println("dbcon is null.");
-//					
+		                sout.println("dbcon is null.");					
 					
-//					// Get a connection from dataSource
+					// Get a connection from dataSource
 					//Connection dbcon = dataSource.getConnection();
-////					
-////					/***********************************************
-////					 * START fuzzy query
-////					 **********************************************/
+					
+					/***********************************************
+					 * START fuzzy query
+					 **********************************************/
 					String fuzzyQuery = "select title from movies where " +
 							"ed(upper(?), upper(title)) <= 1;";
 					PreparedStatement fuzzyStmt = dbcon.prepareStatement(fuzzyQuery);
@@ -264,9 +264,9 @@ public class SearchServlet  extends HttpServlet {
 						}
 						fuzzy_terms.add(searchTerm);
 					}
-////					/************************************************
-////					 * END fuzzy query
-////					 ***********************************************/
+					/************************************************
+					 * END fuzzy query
+					 ***********************************************/
 					if (fuzzy_terms.size() == 0){
 						String searchTerm = "";
 						String[] titleArray = searchTermRaw.split(" ");
@@ -283,18 +283,18 @@ public class SearchServlet  extends HttpServlet {
 					match_query = match_query.substring(0,match_query.lastIndexOf("or"));
 					String sql = base_query + match_query + middle_query + match_query + order_query;
 					PreparedStatement statement = dbcon.prepareStatement(sql);
-////					
-////					
-////					// Set the parameter represented by "?" in the query to the id we get from url,
-////					// num 1 indicates the first "?" in the query
+					
+					
+					// Set the parameter represented by "?" in the query to the id we get from url,
+					// num 1 indicates the first "?" in the query
 					int fuzzy_size = fuzzy_terms.size();
 					for(int i= 0; i< fuzzy_size; i++)
 					{
 						statement.setString(i+1, fuzzy_terms.get(i));
 						statement.setString(i+1+fuzzy_size, fuzzy_terms.get(i));
 					}
-////					//statement.setString(3, searchTerm);
-////					//statement.setString(4, searchTerm);
+					//statement.setString(3, searchTerm);
+					//statement.setString(4, searchTerm);
 					statement.setInt((fuzzy_size*2)+1, Integer.parseInt(displayNum)); // limit
 					statement.setInt((fuzzy_size*2)+2, int_offset); // offset
 
@@ -302,7 +302,7 @@ public class SearchServlet  extends HttpServlet {
 					
 					JsonArray jsonArray = new JsonArray();
 					
-////					// store string so we don't get repeating rows of the same movie
+					// store string so we don't get repeating rows of the same movie
 					String prevMovieId = "";
 					
 					while(rs.next()) {
@@ -337,7 +337,7 @@ public class SearchServlet  extends HttpServlet {
 		                genreStatement.setString(1, movieId);
 		                ResultSet genreRS = genreStatement.executeQuery();
 						
-////		                // create array of genres to add to the json object
+		                // create array of genres to add to the json object
 //////		                String genreQuery = "SELECT * FROM genres, genres_in_movies\r\n" + 
 //////		                		"WHERE genres_in_movies.movieId = '"+ movieId + 
 //////		                		"' AND\r\n" + 
@@ -360,8 +360,8 @@ public class SearchServlet  extends HttpServlet {
 		                	genreArr.add(genreObj);
 		                }
 		                jsonObject.add("genres", genreArr);
-////		                
-////		                // create array of stars to add to the json object
+		                
+		                // create array of stars to add to the json object
 		                String starQuery = "SELECT * FROM stars\r\n" + 
 		                		"	INNER JOIN stars_in_movies\r\n" + 
 		                		"	ON stars_in_movies.starId = stars.id\r\n" + 
@@ -391,24 +391,24 @@ public class SearchServlet  extends HttpServlet {
 					System.out.println("Advanced Search by star that is not in movie.");
 					System.out.println(jsonArray.toString());
 					System.out.println(jsonArray.toString().length());
-////					
-////					// json array is empty "[]"
-////					// add empty fields so javascript files 
-////					// don't throw errors going through the 
-////					// json data
+					
+					// json array is empty "[]"
+					// add empty fields so javascript files 
+					// don't throw errors going through the 
+					// json data
 					if (jsonArray.toString().length() == 2) {
 						
 						JsonObject jsonObject = new JsonObject();
 						
-////						// add empty movie
+						// add empty movie
 						jsonObject.addProperty("movie_id", "");
 		                jsonObject.addProperty("movie_title", "");
 		                jsonObject.addProperty("movie_year", "");
 		                jsonObject.addProperty("movie_director", "");
 		                jsonObject.addProperty("movie_rating", "");
 		                jsonArray.add(jsonObject);
-////		                
-////		                // add empty genre
+		                
+		                // add empty genre
 		                JsonArray genreArr = new JsonArray();
 	                	JsonObject genreObj = new JsonObject();
 	                	genreObj.addProperty("genre_id", "");
@@ -418,8 +418,8 @@ public class SearchServlet  extends HttpServlet {
 						
 		                System.out.println("before star statement.");
 		                System.out.println(jsonArray.toString());
-////		                
-////		               // boolean starExists = false;
+		                
+		               // boolean starExists = false;
 		                
 						
 					}
@@ -432,12 +432,13 @@ public class SearchServlet  extends HttpServlet {
 		            dbcon.close();   
 		            
 					sout.close();
-////					/***********************************************
-////					 * end JDBC time
-////					 **********************************************/
-					long endTimeTJ = System.nanoTime();
-					long elapsedTimeTJ = endTimeTJ - startTimeTJ; // elapsed time in nano seconds. Note: print the values in nano seconds 
+					/***********************************************
+					 * end JDBC time
+					 **********************************************/
+					//long endTimeTJ = System.nanoTime();
+					//long elapsedTimeTJ = endTimeTJ - startTimeTJ; // elapsed time in nano seconds. Note: print the values in nano seconds 
 					
+					/*
 					FileWriter fw = null;
 					try {
 						fw = new FileWriter(file, true);
@@ -450,6 +451,7 @@ public class SearchServlet  extends HttpServlet {
 					} finally {
 						fw.close();
 					}
+					*/
 	            
 				} catch (Exception e) {
 					// write error message JSON object to output
@@ -467,12 +469,13 @@ public class SearchServlet  extends HttpServlet {
 
 			}
 			
-////			/***********************************************
-////			 * end search time
-////			 **********************************************/
-			long endTimeTS = System.nanoTime();
-			long elapsedTimeTS = endTimeTS - startTimeTS; // elapsed time in nano seconds. Note: print the values in nano seconds 
+			/***********************************************
+			 * end search time
+			 **********************************************/
+			//long endTimeTS = System.nanoTime();
+			//long elapsedTimeTS = endTimeTS - startTimeTS; // elapsed time in nano seconds. Note: print the values in nano seconds 
 			
+			/*
 			FileWriter fw = null;
 			try {
 				fw = new FileWriter(file, true);
@@ -485,7 +488,7 @@ public class SearchServlet  extends HttpServlet {
 			} finally {
 				fw.close();
 			}
-			
+			*/
 		}
 		
 }

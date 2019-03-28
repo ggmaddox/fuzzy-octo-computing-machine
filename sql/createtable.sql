@@ -81,6 +81,6 @@ CREATE TABLE employees (
     `password` VARCHAR(20) NOT NULL,
     fullname VARCHAR(100));
     
--- INSERT INTO employees VALUES('classta@email.edu', 'classta', 'TA CS122B');
+INSERT INTO employees VALUES('classta@email.edu', 'classta', 'TA CS122B');
 
 -- UPDATE employees SET `password`='1' WHERE email='classta@email.edu';

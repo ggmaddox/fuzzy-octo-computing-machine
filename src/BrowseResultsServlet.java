@@ -1,7 +1,7 @@
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
-import java.util.Enumeration;
+//import java.util.Enumeration;
 
 import javax.annotation.Resource;
 import javax.naming.Context;
@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
-import javax.servlet.http.HttpSession;
+//import javax.servlet.http.HttpSession;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
@@ -35,7 +35,6 @@ public class BrowseResultsServlet  extends HttpServlet {
 				throws ServletException, IOException {
 
 			response.setContentType("application/json"); // Response mime type
-			//HttpSession session = request.getSession();
 			
 			// get the parameters in the url
 			String titleTerm = request.getParameter("title");
@@ -299,8 +298,6 @@ public class BrowseResultsServlet  extends HttpServlet {
 			if ((page == null) || (page.compareTo("null") == 0)) {
 
 				page = "1";
-//				request.setAttribute("page-num", new String("1"));
-//				page = (String)request.getAttribute("page-num");
 				System.out.println("AdvancedSearchServlet: set page-num: " + page);
 			}
 
@@ -308,8 +305,6 @@ public class BrowseResultsServlet  extends HttpServlet {
 			if ((limit == null) || (limit.compareTo("null") == 0))  {
 
 				limit = "10";
-//				request.setAttribute("display-num", new String("10"));
-//				limit = (String)request.getAttribute("display-num");
 				System.out.println("AdvancedSearchServlet: set display-num: " + limit);
 			}
 			
@@ -366,10 +361,6 @@ public class BrowseResultsServlet  extends HttpServlet {
 				
 				JsonArray jsonArray = new JsonArray();
 				
-				//JsonObject limitOffset = new JsonObject();
-				//limitOffset.addProperty("limit", limit);
-				//limitOffset.addProperty("offset", offset);
-				
 				// store string so we don't get repeating rows of the same movie
 				String prevMovieId = "";
 				
@@ -378,8 +369,6 @@ public class BrowseResultsServlet  extends HttpServlet {
 					String movieTitle = rs.getString("title");
 					int movieYear = rs.getInt("year");
 					String movieDirector = rs.getString("director");
-					//String genreName = rs.getString("genreName");
-					//String starName= rs.getString("starName");
 					float movieRating = rs.getFloat("rating");
 					
 					JsonObject jsonObject = new JsonObject();
@@ -390,7 +379,6 @@ public class BrowseResultsServlet  extends HttpServlet {
 		                jsonObject.addProperty("movie_year", movieYear);
 		                jsonObject.addProperty("movie_director", movieDirector);
 		                jsonObject.addProperty("movie_rating", movieRating);
-		                
 		                
 		                jsonArray.add(jsonObject);
 					}
