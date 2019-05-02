@@ -1,5 +1,3 @@
-# cs122b-winter19-team-102
-
 # JMeter
 The html file jmeter_report.html is located in the `jmeter-report` folder  
 Logs are located in `jmeter-report/logs/`  
@@ -22,7 +20,7 @@ There are also copies of the slave/master log files from which the scaled logs w
 
 Each log file contains two columns in the format: TJ TQ\n  
 
-# IP addresses
+# IP addresses (no longer applicable)
 aws: 3.17.64.3  
 aws master: 18.217.148.81  
 aws slave: 18.222.208.184  
